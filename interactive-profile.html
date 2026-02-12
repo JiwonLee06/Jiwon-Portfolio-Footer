@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Tech Stack</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1440px;
+            height: 100vh;
+            margin: 0 auto;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #DB43A0 0%, #88135B 100%);
+            font-family: 'Avenir', 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            cursor: default;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .header-text {
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 32px;
+            font-weight: 300;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease, visibility 0s linear 1s;
+            z-index: 100;
+        }
+        
+        .header-text.visible {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 1s ease, visibility 0s linear 0s;
+        }
+
+        .subheader-text {
+            position: absolute;
+            top: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 24px;
+            font-weight: 300;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease 0.5s, visibility 0s linear 1.5s;
+            z-index: 100;
+        }
+        
+        .subheader-text.visible {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 1s ease 0.5s, visibility 0s linear 0s;
+        }
+
+        .tech-button {
+            position: absolute;
+            padding: 16px 50px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 40px;
+            color: white;
+            font-size: 18px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: none;
+            pointer-events: none;
+            white-space: nowrap;
+            /* 모든 버튼 같은 크기로 고정 */
+            min-width: 300px;
+            width: 300px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .profile-section {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease, visibility 0s linear 1s;
+            z-index: 200;
+        }
+        
+        .profile-section.visible {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 1s ease 1s, visibility 0s linear 0s;
+        }
+
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.379);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .social-btn {
+            padding: 8px 20px;
+            background: white;
+            border: none;
+            border-radius: 20px;
+            color: #4a002f;
+            font-size: 17px;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .social-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="header-text">Oops, you scattered my creative toolbox</div>
+        <div class="subheader-text">Well, that was fun. Want to create something together?</div>
+        
+        <div class="profile-section">
+            <!-- 프로필 이미지 URL을 여기에 입력하세요 -->
+            <img src="./img/Profile.jpg" alt="Profile" class="profile-image" id="profileImage">
+            <div class="social-buttons">
+                <!-- 이메일 링크를 여기에 입력하세요 -->
+                <a href="ijiwon4706@gmail.com" class="social-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    Email
+                </a>
+                <!-- GitHub 링크를 여기에 입력하세요 -->
+                <a href="https://github.com/JiwonLee06" target="_blank" class="social-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+                    </svg>
+                    GitHub
+                </a>
+                <!-- LinkedIn 링크를 여기에 입력하세요 -->
+                <a href="https://www.linkedin.com/in/jiwon-leee/" target="_blank" class="social-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                    </svg>
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const techStack = [
+            'Figma', 'Java Script', 'CSS', 'HTML','Python',
+            'Rhinoceros 3D', 'Adobe InDesign', 'Adobe Photoshop', 'Adobe Illustration'
+        ];
+
+        const container = document.getElementById('container');
+        const buttons = [];
+        let mouseX = -1000; // 화면 밖으로 초기화
+        let mouseY = -1000; // 화면 밖으로 초기화
+        let anyButtonHovered = false;
+
+        // 랜덤 프로필 이미지 (원하는 이미지로 변경하려면 HTML의 img src를 수정하세요)
+        // const randomNum = Math.floor(Math.random() * 1000);
+        // document.getElementById('profileImage').src = `https://picsum.photos/300/300?random=${randomNum}`;
+
+        // 초기 버튼 생성 (바닥에서부터 위로 쌓인 상태로 시작)
+        const centerX = 720; // 1440px / 2
+        
+        // 버튼 실제 높이 측정을 위한 임시 버튼 생성
+        const tempButton = document.createElement('div');
+        tempButton.className = 'tech-button';
+        tempButton.textContent = 'Test';
+        tempButton.style.visibility = 'hidden';
+        container.appendChild(tempButton);
+        const actualButtonHeight = tempButton.offsetHeight;
+        container.removeChild(tempButton);
+        
+        const buttonSpacing = -2; // 버튼 사이 간격 없음 (딱 붙음)
+        
+        // 바닥 위치 설정 - 화면 맨 아래에서 버튼 높이의 절반만큼 위
+        const bottomMargin = 0;
+        const bottomY = window.innerHeight - bottomMargin;
+        
+        techStack.forEach((tech, index) => {
+            const button = document.createElement('div');
+            button.className = 'tech-button';
+            button.textContent = tech;
+            
+            // 모든 버튼이 정확히 같은 X 위치, 바닥에서부터 위로 쌓임
+            const initialX = centerX;
+            // 배열의 마지막 요소(Adobe Illustration)가 가장 아래(바닥)
+            const stackIndex = techStack.length - 1 - index;
+            const initialY = bottomY - stackIndex * (actualButtonHeight + buttonSpacing) - actualButtonHeight / 2;
+            
+            button.style.left = initialX + 'px';
+            button.style.top = initialY + 'px';
+            button.style.transform = 'translate(-50%, -50%) rotate(0deg)';
+            container.appendChild(button);
+
+            const buttonData = {
+                element: button,
+                x: initialX,
+                y: initialY,
+                vx: 0,
+                vy: 0,
+                rotation: 0,
+                rotationSpeed: 0,
+                width: 300,
+                height: actualButtonHeight,
+                isStopped: true,
+                stoppedFrames: 1000,
+                hasBeenHovered: false
+            };
+            
+            buttons.push(buttonData);
+        });
+
+        // 마우스 트래킹
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // 물리 시뮬레이션
+        function animate() {
+            // 먼저 모든 버튼에 대해 호버 체크
+            let anyHovered = false;
+            buttons.forEach(btn => {
+                if (!btn.hasBeenHovered) {
+                    const rect = btn.element.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    const dx = mouseX - centerX;
+                    const dy = mouseY - centerY;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 180) {
+                        anyHovered = true;
+                    }
+                }
+            });
+            
+            // 하나라도 호버되면 모든 버튼 활성화 (무너지는 효과)
+            if (anyHovered) {
+                buttons.forEach(btn => {
+                    if (!btn.hasBeenHovered) {
+                        btn.hasBeenHovered = true;
+                        // 각 버튼에 약간씩 다른 초기 속도 부여 (무너지는 효과) - 70%로 감소
+                        btn.vx = (Math.random() - 0.5) * 2.1;
+                        btn.vy = (Math.random() - 0.5) * 1.4 - 0.7; // 약간 위로 튀기
+                        btn.rotationSpeed = (Math.random() - 0.5) * 3.5;
+                        btn.isStopped = false;
+                    }
+                });
+                
+                // 첫 호버 발생 시 순차적으로 표시
+                if (!anyButtonHovered) {
+                    anyButtonHovered = true;
+                    
+                    // 2초 후 첫 번째 텍스트
+                    setTimeout(() => {
+                        document.querySelector('.header-text').classList.add('visible');
+                    }, 1000);
+                    
+                    // 3초 후 두 번째 텍스트
+                    setTimeout(() => {
+                        document.querySelector('.subheader-text').classList.add('visible');
+                    }, 1000);
+                    
+                    // 4초 후 프로필
+                    setTimeout(() => {
+                        document.querySelector('.profile-section').classList.add('visible');
+                    }, 1200);
+                }
+            }
+            
+            buttons.forEach(btn => {
+                // 한 번도 호버되지 않았으면 아무것도 하지 않음 (완전히 고정)
+                if (!btn.hasBeenHovered) {
+                    return;
+                }
+                
+                const rect = btn.element.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+
+                const dx = mouseX - centerX;
+                const dy = mouseY - centerY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                // 마우스에 반응하는 반경
+                const repelRadius = 180;
+
+                // 커서가 가까우면 계속 반응
+                if (distance < repelRadius && distance > 0) {
+                    btn.isStopped = false;
+                    btn.stoppedFrames = 0;
+                    
+                    const angle = Math.atan2(dy, dx);
+                    const force = (repelRadius - distance) / repelRadius;
+                    
+                    // 더 부드러운 힘 곡선 (제곱 사용)
+                    const smoothForce = force * force;
+                    
+                    // 바닥 근처에 있으면 더 강하게 튕김
+                    const isNearFloor = btn.y > window.innerHeight - 150;
+                    const pushStrength = isNearFloor ? smoothForce * 18 : smoothForce * 12.6;
+
+                    btn.vx -= Math.cos(angle) * pushStrength;
+                    btn.vy -= Math.sin(angle) * pushStrength;
+                    
+                    // 회전 추가 (바닥에 있으면 더 강하게)
+                    const rotationStrength = isNearFloor ? 7 : 5.6;
+                    btn.rotationSpeed += (Math.random() - 0.5) * rotationStrength;
+                }
+
+                // 멈춘 상태면 물리 계산 스킵
+                if (btn.isStopped) {
+                    return;
+                }
+
+                // 중력 효과
+                btn.vy += 0.4;
+
+                // 마찰 효과
+                btn.vx *= 0.97;
+                btn.vy *= 0.97;
+
+                btn.x += btn.vx;
+                btn.y += btn.vy;
+
+                // 버튼 간 충돌 감지 및 반발 (겹침 방지) - 호버된 버튼들끼리만
+                buttons.forEach(other => {
+                    if (other === btn) return;
+                    if (!other.hasBeenHovered) return; // other도 호버되지 않았으면 스킵
+                    
+                    const dx = btn.x - other.x;
+                    const dy = btn.y - other.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    // 버튼들이 절대 겹치지 않도록 충분한 거리 확보
+                    const minDist = 180;
+                    
+                    if (dist < minDist && dist > 0) {
+                        const angle = Math.atan2(dy, dx);
+                        const overlap = minDist - dist;
+                        const force = overlap * 0.8;
+                        
+                        // 두 버튼을 서로 밀어냄
+                        btn.vx += Math.cos(angle) * force;
+                        btn.vy += Math.sin(angle) * force;
+                        other.vx -= Math.cos(angle) * force;
+                        other.vy -= Math.sin(angle) * force;
+                        
+                        // 회전 효과
+                        btn.rotationSpeed += force * 0.3;
+                        other.rotationSpeed -= force * 0.3;
+                        
+                        // 충돌하면 다시 활성화
+                        other.isStopped = false;
+                        other.stoppedFrames = 0;
+                    }
+                });
+
+                // 화면 경계에서 튕김
+                const margin = 60;
+                const bounceStrength = 0.6;
+                
+                if (btn.x < margin) {
+                    btn.x = margin;
+                    btn.vx *= -bounceStrength;
+                    btn.rotationSpeed *= 0.7;
+                } else if (btn.x > 1440 - margin) {
+                    btn.x = 1440 - margin;
+                    btn.vx *= -bounceStrength;
+                    btn.rotationSpeed *= 0.7;
+                }
+
+                if (btn.y < margin) {
+                    btn.y = margin;
+                    btn.vy *= -bounceStrength;
+                    btn.rotationSpeed *= 0.7;
+                } else if (btn.y > window.innerHeight - margin) {
+                    // 바닥에 닿음
+                    btn.y = window.innerHeight - margin;
+                    btn.vy *= -bounceStrength;
+                    btn.vx *= 0.8; // 수평 속도 크게 감소
+                    
+                    // 바닥에서 회전 강하게 감소
+                    btn.rotationSpeed *= 0.6;
+                    
+                    // 바닥에 닿았을 때 거의 멈췄으면 완전히 정지
+                    if (Math.abs(btn.vy) < 1 && Math.abs(btn.vx) < 1) {
+                        btn.vy = 0;
+                        btn.vx *= 0.7;
+                        btn.rotationSpeed *= 0.5;
+                    }
+                }
+
+                // 회전 업데이트
+                btn.rotation += btn.rotationSpeed;
+                
+                // 회전 감쇠
+                if (Math.abs(btn.rotationSpeed) > 0.1) {
+                    btn.rotationSpeed *= 0.88;
+                } else {
+                    btn.rotationSpeed *= 0.6;
+                }
+
+                // 완전히 멈췄는지 확인 (더 엄격한 조건)
+                const isNearlyStill = Math.abs(btn.vx) < 0.5 && 
+                                     Math.abs(btn.vy) < 0.5 && 
+                                     Math.abs(btn.rotationSpeed) < 0.4;
+                
+                if (isNearlyStill) {
+                    btn.stoppedFrames++;
+                    
+                    // 15프레임 동안 거의 정지 상태면 완전히 멈춤
+                    if (btn.stoppedFrames > 15) {
+                        btn.vx = 0;
+                        btn.vy = 0;
+                        btn.rotationSpeed = 0;
+                        btn.isStopped = true;
+                    }
+                } else {
+                    btn.stoppedFrames = 0;
+                }
+
+                // 아주 작은 값은 0으로
+                if (Math.abs(btn.vx) < 0.1) btn.vx = 0;
+                if (Math.abs(btn.vy) < 0.1) btn.vy = 0;
+                if (Math.abs(btn.rotationSpeed) < 0.1) btn.rotationSpeed = 0;
+
+                // 위치 업데이트 (회전 포함) - 호버된 버튼만
+                btn.element.style.left = btn.x + 'px';
+                btn.element.style.top = btn.y + 'px';
+                btn.element.style.transform = `translate(-50%, -50%) rotate(${btn.rotation}deg)`;
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
